@@ -36,7 +36,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'hungry'
+    'hungry',
+    'social.apps.django_app.default'
     
     #'beachnbeach.templatetags.resort_location'
 )
@@ -146,7 +147,18 @@ TEMPLATE_CONTEXT_PROCESSORS = (
   "django.core.context_processors.request",
   "django.contrib.auth.context_processors.auth",
   "django.core.context_processors.media",
-  "django.core.context_processors.static"
+  "django.core.context_processors.static",
+  'django.core.context_processors.tz',
+  'django.contrib.messages.context_processors.messages',
+  'social.apps.django_app.context_processors.backends',
+  'social.apps.django_app.context_processors.login_redirect',
+)
+
+AUTHENTICATION_BACKENDS = (
+   'social.backends.facebook.FacebookOAuth2',
+   'social.backends.google.GoogleOAuth2',
+   'social.backends.twitter.TwitterOAuth',
+   'django.contrib.auth.backends.ModelBackend',
 )
 
 STATICFILES_DIRS = (
@@ -164,5 +176,11 @@ TEMPLATE_DIRS = (
 )
 
 ADMINS = (('Talha', 'talha@object90.com'),)
+
+LOGIN_REDIRECT_URL = '/'
+
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '677283859875-psfut9v07mdocv38qhdea45mbgr69cbs.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'iN8EE1eowFGp8R-i6rr8Vgh-'
 
  
