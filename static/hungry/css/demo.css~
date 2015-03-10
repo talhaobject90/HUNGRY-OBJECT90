@@ -14,16 +14,18 @@
 .clearfix:after { clear: both; }
 
 body {
-	background: #f0f0f0 no-repeat center bottom;
-	color: #47A3DA;
+	background: url('../img/back7.png') #e7ecea no-repeat right bottom;
+	/*background:url('../img/back4.jpg');*/
+	color: #74777b;
 	font-size: 1em;
-	font-family: 'Raleway', Arial, sans-serif;
+	font-family:   Arial, sans-serif;
 	min-height: 500px;
 	font-weight:600;
+background-size: 200px 300px;
 }
 
 a {
-	color: #47A3DA;
+	color: #74777b;
 	text-decoration: none;
 	outline: none;
 }
@@ -40,7 +42,7 @@ width: 100%;
 
 a:hover,
 a:focus {
-	color: #ec5a62;
+	color: #2CC185;
 }
 
 /* Header */
@@ -74,7 +76,7 @@ a:focus {
 	font-weight: 100;
 	font-size: 4.5em;
 	line-height: 0.75;
-	color: #47A3DA;
+	color: #74777b;
 	letter-spacing: -1px;
 }
 
@@ -86,7 +88,7 @@ a:focus {
 	text-indent: 5px;
 	line-height: 1;
 	padding: 1em 0;
-	color: #000;
+	color: #bdc2c9;
 }
 
 /* To Navigation Style */
@@ -157,6 +159,18 @@ a:focus {
 	}
 }
 
+.cbp-qtcontent img{
+width:105px;
+height:65px;
+}
 
+.menu_header{
+	float:left;
+	margin:auto;
+}
+
+#quick_booking{
+	float:right;
+}
 
 

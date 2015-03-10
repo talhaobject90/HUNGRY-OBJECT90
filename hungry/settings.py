@@ -1,8 +1,23 @@
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import socket
+from oscar import get_core_apps
+from oscar.defaults import *
+from oscar import OSCAR_MAIN_TEMPLATE_DIR
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+
+location = lambda x: os.path.join(
+    os.path.dirname(os.path.realpath(__file__)), x)
+
+TEMPLATE_DIRS = (
+    location('templates'),
+    OSCAR_MAIN_TEMPLATE_DIR,
+)
+
+
+SITE_ID = 1
 
 # openshift is our PAAS for now.
 ON_PAAS = 'OPENSHIFT_REPO_DIR' in os.environ
@@ -29,7 +44,7 @@ else:
 
 # Application definition
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -37,10 +52,15 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'hungry',
-    'social.apps.django_app.default'
+    'social.apps.django_app.default',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
+    'compressor',
     
     #'beachnbeach.templatetags.resort_location'
-)
+] + get_core_apps()
+
+SITE_ID = 1
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -49,6 +69,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'oscar.apps.basket.middleware.BasketMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
 #TEMPLATE_LOADERS = (
@@ -152,6 +174,11 @@ TEMPLATE_CONTEXT_PROCESSORS = (
   'django.contrib.messages.context_processors.messages',
   'social.apps.django_app.context_processors.backends',
   'social.apps.django_app.context_processors.login_redirect',
+  'oscar.apps.search.context_processors.search_form',
+  'oscar.apps.promotions.context_processors.promotions',
+  'oscar.apps.checkout.context_processors.checkout',
+  'oscar.apps.customer.notifications.context_processors.notifications',
+  'oscar.core.context_processors.metadata',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -159,6 +186,7 @@ AUTHENTICATION_BACKENDS = (
    'social.backends.google.GoogleOAuth2',
    'social.backends.twitter.TwitterOAuth',
    'django.contrib.auth.backends.ModelBackend',
+   'oscar.apps.customer.auth_backends.EmailBackend',
 )
 
 STATICFILES_DIRS = (
@@ -197,4 +225,24 @@ else:       ##online
     SOCIAL_AUTH_TWITTER_SECRET = 'QeyTdb9MxkwAIVdQimitGGjBGe8hj0pYi8luJpD9CAtoYtHKES'
     
 
- 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    }
+}
+
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
+    },
+}
+
+
+OSCAR_INITIAL_ORDER_STATUS = 'Pending'
+OSCAR_INITIAL_LINE_STATUS = 'Pending'
+OSCAR_ORDER_STATUS_PIPELINE = {
+    'Pending': ('Being processed', 'Cancelled',),
+    'Being processed': ('Processed', 'Cancelled',),
+    'Cancelled': (),
+}

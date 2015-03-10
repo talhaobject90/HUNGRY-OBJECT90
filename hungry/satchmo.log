@@ -1,0 +1,10 @@
+Tue, 10 Mar 2015 11:49:33 root         INFO     Satchmo Started
+Tue, 10 Mar 2015 06:19:33 py.warnings  WARNING  /usr/local/lib/python2.7/dist-packages/django/contrib/comments/__init__.py:13: RemovedInDjango18Warning: django.contrib.comments is deprecated and will be removed before Django 1.8.
+  warnings.warn("django.contrib.comments is deprecated and will be removed before Django 1.8.", RemovedInDjango18Warning)
+
+Tue, 10 Mar 2015 06:19:33 py.warnings  WARNING  /usr/local/lib/python2.7/dist-packages/livesettings/models.py:89: RemovedInDjango18Warning: `SettingManager.get_query_set` method should be renamed `get_queryset`.
+  class SettingManager(models.Manager):
+
+Tue, 10 Mar 2015 06:19:33 py.warnings  WARNING  /usr/local/lib/python2.7/dist-packages/livesettings/models.py:149: RemovedInDjango18Warning: `LongSettingManager.get_query_set` method should be renamed `get_queryset`.
+  class LongSettingManager(models.Manager):
+

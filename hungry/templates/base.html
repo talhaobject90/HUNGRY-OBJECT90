@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<title>HometoDoor</title>
+		<meta name="description" content="A search input that morphs into a fullscreen search page." />
+		<meta name="keywords" content="search, input, effect, morph, transition, inspiration" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link href='http://fonts.googleapis.com/css?family=Raleway:100,700,800' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.2.0/css/font-awesome.min.css'%}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css'%}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/demo.css'%}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/component.css'%}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css'%}" />
+		
+
+
+		
+				
+		<!--[if IE]>
+  		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js'%}"></script>
+		<![endif]-->
+	</head>
+	<body  {% block body_class %}{% endblock %}>
+		<div class="container_body">
+
+			<div id="morphsearch" class="morphsearch">
+				<form class="morphsearch-form">
+					<input class="morphsearch-input" type="search" placeholder="Search Ur menu"/>
+					<button class="morphsearch-submit" type="submit">Search</button>
+				</form>
+				<div class="morphsearch-content">
+					<div class="dummy-column">
+						<h2>Top Rated Dishes</h2>
+						<a class="dummy-media-object" href="#">
+							<img class="round" src="{% static 'img/thumbs/hotel2.jpg'%}" alt="Sara Soueidan"/>
+							<h3>DONUT PASTRY</h3>
+						</a>
+						<a class="dummy-media-object" href="#">
+							<img class="round" src="{% static 'img/thumbs/hotel1.jpg'%}" alt="Rachel Smith"/>
+							<h3>CARROT CAKE</h3>
+						</a>
+						<a class="dummy-media-object" href="#">
+							<img class="round" src="{% static 'img/thumbs/hotel.jpg'%}" alt="Peter Finlan"/>
+							<h3>TOOTSIE ROLL MARSHMALLOW</h3>
+						</a>
+						<a class="dummy-media-object" href="#">
+							<img class="round" src="{% static 'img/thumbs/hotel1.jpg'%}" alt="Patrick Cox"/>
+							<h3>Cream gummi bears</h3>
+						</a>
+						<a class="dummy-media-object" href="#">
+							<img class="round" src="{% static 'img/thumbs/hotel2.jpg'%}" alt="Tim Holman"/>
+							<h3>TOFFEE SOUFFLÉ CHOCOLATE BAR</h3>
+						</a>
+						<a class="dummy-media-object" href="#">
+							<img class="round" src="{% static 'img/thumbs/hotel.jpg'%}" alt="Shaun Dona"/>
+							<h3>PIE WAFER BROWNIE</h3>
+						</a>
+					</div>
+					<div class="dummy-column">
+						<h2>TOP MENUS</h2>
+						<a class="dummy-media-object" href="#">
+							<img src="{% static 'img/thumbs/non_veg.jpg'%}" alt="PagePreloadingEffect"/>
+							<h3>Non-Vegetarian</h3>
+						</a>
+						<a class="dummy-media-object" href="#">
+							<img src="{% static 'img/thumbs/veg.jpg'%}" alt="ArrowNavigationStyles"/>
+							<h3>Vegetarian</h3>
+						</a>
+						<a class="dummy-media-object" href="#">
+							<img src="{% static 'img/thumbs/japanese.jpg'%}" alt="HoverEffectsIdeasNew"/>
+							<h3>Chinese</h3>
+						</a>
+						<a class="dummy-media-object" href="#">
+							<img src="{% static 'img/thumbs/chinese.jpg'%}" alt="FreebieHalcyonDays"/>
+							<h3>Japanese</h3>
+						</a>
+						<a class="dummy-media-object" href="#">
+							<img src="{% static 'img/thumbs/french.jpg'%}" alt="ArticleIntroEffects"/>
+							<h3>Italian</h3>
+						</a>
+						<a class="dummy-media-object" href="#">
+							<img src="{% static 'img/thumbs/japanese.jpg'%}" alt="DraggableDualViewSlideshow"/>
+							<h3>French</h3>
+						</a>
+					</div>
+					<div class="dummy-column">
+						<h2>OFFERS</h2>
+						<a class="dummy-media-object" href="#">
+							<img src="{% static 'img/thumbs/win.jpg'%}" alt="TooltipStylesInspiration"/>
+							<h3>Win a Trip</h3>
+						</a>
+						<a class="dummy-media-object" href="#">
+							<img src="{% static 'img/thumbs/offer.jpg'%}" alt="AnimatedHeaderBackgrounds"/>
+							<h3>Weekdays Lunch 50% off!!</h3>
+						</a>
+						<a class="dummy-media-object" href="3">
+							<img src="{% static 'img/thumbs/coupons.jpg'%}" alt="OffCanvas"/>
+							<h3>$500 Worth Vouchers</h3>
+						</a>
+						<a class="dummy-media-object" href="#">
+							<img src="{% static 'img/thumbs/hotel1.jpg'%}" alt="TabStyles"/>
+							<h3>Party Offers</h3>
+						</a>
+						<a class="dummy-media-object" href="#">
+							<img src="{% static 'img/thumbs/hotel2.jpg'%}" alt="ResponsiveSVGs"/>
+							<h3>Special Member Discounts</h3>
+						</a>
+	
+					</div>
+				</div><!-- /morphsearch-content -->
+				<span class="morphsearch-close"></span>
+			</div><!-- /morphsearch -->
+			
+						<aside class="sidebar clearfix">
+			
+			
+				<nav>
+			
+ 					  
+  
+   {% if user and not user.is_anonymous %}
+    
+       <a>Hello {{ user.get_full_name|default:user.username }}!</a><br>
+    
+   
+     <a href="{% url 'auth:logout' %}?next={{ request.path }}"  style="font-size:0.7em"><i class="fa fa-fw fa-sign-in"> </i> Sign Out</a>
+       
+    
+   {% else %}
+   	 <a href="#"  style="font-size:0.7em"><i class="fa fa-fw fa-sign-in"> </i> Sign in</a><span style="font-size:0.5em;padding-top:5px;">Or Login With</span> 
+     
+     <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"   ><i class="fa fa-fw fa-facebook"> </i> </a>
+     
+  
+     
+     <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}"   ><i class="fa fa-fw fa-google-plus"> </i></a>
+  
+     
+       <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}"  ><i class="fa fa-fw fa-twitter"> </i></a>
+     
+   {% endif %}
+ 
+				</nav>
+			</aside>
+			
+			<header class="codrops-header">
+			<!-- <a href="index.html"><h1>HometoDoor <span>The world is your home now...</span></h1></a> -->
+			<a href="index.html"><h1><img src="{% static 'img/door_logo.png'%}" style="width:249px;margin:26px 26px 0px 0px"><br><span>Demand your menu, any where ,any time...</span></h1></a>
+			</header>
+			
+			
+			<div class="main">
+{% block content %} {% endblock %} 
+
+			<header class="">
+			
+			<div id="cbp-qtrotator" class="cbp-qtrotator">
+	<div class="cbp-qtcontent">
+		<img src="{% static 'img/thumbs/hotel2.jpg'%}" alt="img01" />
+		<blockquote>
+		  <p>Lunch Combo - 
+		   Full meals Pack for one week!!</p>
+		  
+		  <footer>$12  only  60% OFF	</footer>
+		</blockquote>
+	</div>
+		<div class="cbp-qtcontent">
+		<img src="{% static 'img/thumbs/chinese.jpg'%}" alt="img01" />
+		<blockquote>
+		  <p>Party Offeres - 50% Discount </p>
+		  <footer>For all parties bigger than 10 in size</footer>
+		</blockquote>
+	</div>
+		<div class="cbp-qtcontent">
+		<img src="{% static 'img/thumbs/french.jpg'%}" alt="img01" />
+		<blockquote>
+		  <p>Festival Season Delivery !!!</p>
+		  <footer>Free for Totals above $50 </footer>
+		</blockquote>
+	</div>
+
+ 
+ 
+ 
+</div>
+			<ul id="cbp-tm-menu" class="cbp-tm-menu">
+			
+			
+				<li>
+					<a href="#">Home</a>
+				</li>
+				<li class="">
+					<a href="#">Demand Menu</a>
+					<ul class="cbp-tm-submenu">
+					<li><a href="custom_menu.html">  <i class="fa fa-fw fa-cutlery"></i>Custom Menu </a></li>
+						<li><a href="#"><i class="fa fa-fw fa-usd"></i>Biddings</a></li>
+						<li><a href="dishes.html" ><i class="fa fa-fw fa-ge"></i>Vegetatian</a></li>
+						<li><a href="dishes.html"><i class="fa fa-fw fa-github-alt"></i>Non-Vegetarian</a></li>
+						<li><a href=dishes.html><i class="fa fa-fw fa-inbox"></i>Snacks Packs</a></li>
+						
+						
+					</ul>
+				</li>
+
+				<li class="">
+					<a href="#">Find My Flavour</a>
+					<ul class="cbp-tm-submenu">
+					<li><a href="dishes.html"><i class="fa fa-fw fa-map-marker"> </i>Italian</a></li>
+						<li><a href="dishes.html"><i class="fa fa-fw fa-map-marker"> </i>North Indian</a></li>
+						<li><a href="dishes.html"><i class="fa fa-fw fa-map-marker"> </i>South Indian</a></li>
+						<li><a href="dishes.html"> <i class="fa fa-fw fa-map-marker"> </i>Chinese </a></li>
+						<li><a href="dishes.html" ><i class="fa fa-fw fa-map-marker"> </i>Japanese</a></li>
+						<li><a href="dishes.html" ><i class="fa fa-fw fa-map-marker"> </i>French</a></li>
+					</ul>
+				</li>
+ 
+ 
+			</ul>
+			</header>
+		</div><!-- /main -->
+		<script src="{% static 'js/classie.js'%}"></script>
+		<script>
+			(function() {
+				var morphSearch = document.getElementById( 'morphsearch' ),
+					input = morphSearch.querySelector( 'input.morphsearch-input' ),
+					ctrlClose = morphSearch.querySelector( 'span.morphsearch-close' ),
+					isOpen = isAnimating = false,
+					// show/hide search area
+					toggleSearch = function(evt) {
+						// return if open and the input gets focused
+						if( evt.type.toLowerCase() === 'focus' && isOpen ) return false;
+
+						var offsets = morphsearch.getBoundingClientRect();
+						if( isOpen ) {
+							classie.remove( morphSearch, 'open' );
+
+							// trick to hide input text once the search overlay closes 
+							// todo: hardcoded times, should be done after transition ends
+							if( input.value !== '' ) {
+								setTimeout(function() {
+									classie.add( morphSearch, 'hideInput' );
+									setTimeout(function() {
+										classie.remove( morphSearch, 'hideInput' );
+										input.value = '';
+									}, 300 );
+								}, 500);
+							}
+							
+							input.blur();
+						}
+						else {
+							classie.add( morphSearch, 'open' );
+						}
+						isOpen = !isOpen;
+					};
+
+				// events
+				input.addEventListener( 'focus', toggleSearch );
+				ctrlClose.addEventListener( 'click', toggleSearch );
+				// esc key closes search overlay
+				// keyboard navigation events
+				document.addEventListener( 'keydown', function( ev ) {
+					var keyCode = ev.keyCode || ev.which;
+					if( keyCode === 27 && isOpen ) {
+						toggleSearch(ev);
+					}
+				} );
+
+				
+				
+
+				/***** for demo purposes only: don't allow to submit the form *****/
+				morphSearch.querySelector( 'button[type="submit"]' ).addEventListener( 'click', function(ev) { ev.preventDefault(); } );
+			})();
+		</script>
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+					<script src="{% static 'js/modernizr.custom.js'%}"></script>
+					
+					
+					
+					
+{% block scripts %} {% endblock %}
+		
+							<script src="{% static 'js/modernizr.custom_quote.js'%}"></script>
+				<script src="{% static 'js/jquery.cbpQTRotator.min.js'%}"></script>
+		<script>
+			$( function() {
+				
+				//- how to call the plugin:
+				$( '#cbp-qtrotator' ).cbpQTRotator( {
+					// default transition speed (ms)
+					speed : 1500,
+					// default transition easing
+					easing : 'ease',
+					// rotator interval (ms)
+					interval : 4000
+				});
+			} );
+		</script>
+		
+		
+ 
+			 
+
+<script src="{% static 'js/cbpTooltipMenu.min.js'%}"></script>
+		<script>
+			var menu = new cbpTooltipMenu( document.getElementById( 'cbp-tm-menu' ) );
+		</script>
+
+	</body>
+</html>
