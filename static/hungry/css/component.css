@@ -885,7 +885,8 @@ bottom: 0px;
 }
 
 .cbp-vm-price {
-	color: #c0c0c0;
+	/* color: #c0c0c0; */
+	color: #545454;
 }
 
 .cbp-vm-add {
@@ -893,9 +894,10 @@ bottom: 0px;
 	background: #2CC185;
 	padding: 10px 20px;
 	border-radius: 2px;
-	margin: 20px 0 0;
+	/* margin: 20px 0 0; */
 	display: inline-block;
 	transition: background 0.2s;
+	width: 100%;
 }
 
 .cbp-vm-track , .cbp-vm-cancel , .cbp-vm-view{
@@ -974,7 +976,7 @@ transition: background 0.2s;
 }
 
 .cbp-vm-view-grid ul li {
-	width: 33%;
+	width: 25%;
 	text-align: center;
 	padding: 25px;
 	margin: 20px 0 0;
@@ -989,6 +991,8 @@ transition: background 0.2s;
 	padding: 10px;
 	border-width: 1px;
 	border-bottom-style: dashed;
+	border-left-style: dashed;
+	border-right-style: dashed;
 }
 
 /* **changed** */
@@ -1000,13 +1004,23 @@ transition: background 0.2s;
 	padding: 10px;
 	border-width: 1px;
 	border-bottom-style: dashed;
+	border-left-style: dashed;
+	border-right-style: dashed;
 } 
 
 .cbp-vm-view-grid .cbp-vm-price {
-	margin: 10px 0;
+	/* margin: 10px 0; */
 	font-size: 1.5em;
+	border-width: 1px;
+	border-left-style: dashed;
+	border-right-style: dashed;
 }
 
+.cbp-vm-view-grid ul li:hover{
+	
+	border: 1px solid #2CC185;
+	cursor: pointer;
+}
 
 /* List view */
 .cbp-vm-view-list li {

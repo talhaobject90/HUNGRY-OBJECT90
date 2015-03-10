@@ -25,7 +25,6 @@ def index(request):
     return render_to_response('hungry/index.html',
                              context_instance=context)
 
-
 def mydishes(request):
     context = RequestContext(request,
                            {'request': request,
