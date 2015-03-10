@@ -7,6 +7,7 @@ from hungry import views
 admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^$', views.index, name='index'),
     url(r'^mydishes/', views.mydishes),
 

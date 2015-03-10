@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %} {% endblock %}
+{% block head %}Login{% endblock %}
+{% block body_class %}{% endblock %}
+
+
+{% block content %}
+			
+<div class="col-md-2" style="padding-top:10.5%;">
+	<div class="cbp-vm-switcher row">
+		<label>My Profile</label> 
+		
+		
+		<img
+			src="{% static 'img/profile_pics/profile.jpg' %}"
+			style="max-width: 100%;"> <br> <a href="#"> Edit your
+			profile</a><br>
+		<hr>
+		<b> <a href="#"> View my profile</a></b>
+		<br>
+		<label>Overall Rating:</label>
+		<input id="input-5a" class="rating form-control hide " data-readonly="true"  data-show-caption="false" data-size="xs"  data-show-clear="false" data-step="1" value="3.5">
+	</div>
+	<br>
+	<div class="cbp-vm-switcher row">
+		<label>Orders</label><br>
+			<br>
+		  
+<button class="btn btn-primary" type="button">
+  <span class="badge">4 </span> Current Orders  
+</button>
+<br><br>
+<button class="btn btn-primary" type="button">
+   <span class="badge">43 </span> Orders completed 
+</button>
+
+		  
+	</div>
+</div>
+<div id="tabs" class="tabs  col-md-10 "  >
+				<nav>
+					<ul>
+						<li class=""><a href="#section-1" ><i class="fa fa-fw fa-cutlery"></i><span>My Dishes</span></a></li>
+						<li class=""><a href="#section-2" ><i class="fa fa-pencil-square-o"></i><span>Product Orders History</span></a></li>
+						<li class=""><a href="#section-3" ><i class="fa fa-pencil-square-o"></i><span>My Orders</span></a></li>
+					</ul>
+				</nav>
+				<div class="content">
+					<section id="section-1" class="">
+				<div id="switch_tab_mydishes" class=" switch_tabs cbp-vm-switcher cbp-vm-view-list">
+					<div class="cbp-vm-options">
+					<h2 class="menu_header">My Dishes</h2>
+						<a href="#" class="cbp-vm-icon cbp-vm-grid" data-view="cbp-vm-view-grid">Grid View</a>
+						<a href="#" class="cbp-vm-icon cbp-vm-list cbp-vm-selected" data-view="cbp-vm-view-list">List View</a>
+					</div>
+					<ul>
+					
+						<li>
+							<a class="cbp-vm-image" href="#"><img src="{% static 'img/thumbs/slid1.jpg'%}""></a>
+							<h3 class="cbp-vm-title">Celery carrot</h3>
+							<div class="cbp-vm-details">
+								Celery carrot napa cabbage wakame zucchini celery chard beetroot jícama sierra leone.
+								
+								<input id="input-5a" class="rating form-control hide " data-readonly="true"  data-show-caption="false" data-size="xs"  data-show-clear="false" data-step="1" value="3.5">
+							
+							</div>
+							
+							<div class="cbp-vm-price">$15.00</div>
+							<!-- <a class="cbp-vm-icon cbp-vm-add" href="#">Edit</a> -->
+						</li>
+						
+						<li>
+							<a class="cbp-vm-image" href="#"><img src="{% static 'img/thumbs/slid2.jpg'%}""></a>
+							<h3 class="cbp-vm-title">Catsear</h3>
+							<div class="cbp-vm-details">
+								Catsear cabbage tomato parsnip cucumber pea brussels sprout spring onion shallot swiss .
+								
+								<input id="input-5a" class="rating form-control hide " data-readonly="true"  data-show-caption="false" data-size="xs"  data-show-clear="false" data-step="1" value="3.5">
+							
+							</div>
+							
+							<div class="cbp-vm-price">$20.00</div>
+							<!-- <a class="cbp-vm-icon cbp-vm-add" href="#">Edit</a> -->
+						</li>
+						
+ 
+					</ul>
+				</div>
+					</section>
+					<section id="section-2" class="">
+				<div id="switch_tab_myorders" class=" switch_tabs cbp-vm-switcher cbp-vm-view-list">
+					<div class="cbp-vm-options">
+					<h2 class="menu_header">Product order history</h2>
+						<a href="#" class="cbp-vm-icon cbp-vm-grid" data-view="cbp-vm-view-grid">Grid View</a>
+						<a href="#" class="cbp-vm-icon cbp-vm-list cbp-vm-selected" data-view="cbp-vm-view-list">List View</a>
+					</div>
+					<ul>
+						<li>
+							<a class="cbp-vm-image" href="#"><img src="{% static 'img/thumbs/slid1.jpg'%}""></a>
+							<h3 class="cbp-vm-title">Celery carrot</h3>
+							<div class="cbp-vm-price">$15.00</div>
+							<div class="cbp-vm-details">
+								Celery carrot napa cabbage wakame zucchini celery chard beetroot jícama sierra leone.
+							</div>
+							<a class="cbp-vm-icon cbp-vm-add" href="#">View</a>
+						</li>
+						<li>
+							<a class="cbp-vm-image" href="#"><img src="{% static 'img/thumbs/slid2.jpg'%}""></a>
+							<h3 class="cbp-vm-title">Catsear</h3>
+							<div class="cbp-vm-price">$20.00</div>
+							<div class="cbp-vm-details">
+								Catsear cabbage tomato parsnip cucumber pea brussels sprout spring onion shallot swiss .
+							</div>
+							<a class="cbp-vm-icon cbp-vm-add" href="#">View</a>
+						</li>
+						<li>
+							<a class="cbp-vm-image" href="#"><img src="{% static 'img/thumbs/slid3.jpg'%}""></a>
+							<h3 class="cbp-vm-title">Mung bean</h3>
+							<div class="cbp-vm-price">$88.00</div>
+							<div class="cbp-vm-details">
+								Mung bean taro chicory spinach komatsuna fennel.
+							</div>
+							<a class="cbp-vm-icon cbp-vm-add" href="#">View</a>
+						</li>
+ 
+ 
+					</ul>
+				</div>
+					</section>
+					
+										<section id="section-3" class="">
+				<div id="switch_tab_myorders" class=" switch_tabs cbp-vm-switcher cbp-vm-view-list">
+					<div class="cbp-vm-options">
+					<h2 class="menu_header">My Orders</h2>
+						<a href="#" class="cbp-vm-icon cbp-vm-grid" data-view="cbp-vm-view-grid">Grid View</a>
+						<a href="#" class="cbp-vm-icon cbp-vm-list cbp-vm-selected" data-view="cbp-vm-view-list">List View</a>
+					</div>
+					<ul>
+						<li>
+							<a class="cbp-vm-image" href="#"><img src="{% static 'img/thumbs/slid1.jpg'%}""></a>
+							<h3 class="cbp-vm-title">Celery carrot</h3>
+							<div class="cbp-vm-price">$15.00</div>
+							<div class="cbp-vm-price">Qty: 2</div>
+							<div class="cbp-vm-details" style="width: 34%;">
+								Your Item has been packed 
+							</div>
+							<a class="cbp-vm-icon cbp-vm-track" href="#"> Track</a><br>
+							<a href="#">Cancel</a>
+						</li>
+						<li>
+							<a class="cbp-vm-image" href="#"><img src="{% static 'img/thumbs/slid2.jpg'%}""></a>
+							<h3 class="cbp-vm-title">Catsear</h3>
+							<div class="cbp-vm-price">$20.00</div>
+							<div class="cbp-vm-details">
+								Delivered
+							</div>
+							<a class="cbp-vm-icon cbp-vm-add" href="#">View</a>
+						</li>
+	  
+					</ul>
+				</div>
+					</section>
+ 
+					 
+				</div><!-- /content -->
+			</div>
+			
+			
+			
+ 
+{% endblock %}
+
+{% block scripts %}
+					
+		<script src="{% static 'js/star-rating.min.js'%}"></script>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/star-rating.min.css'%}" />
+				
+				
+		<script src="{% static 'js/cbpFWTabs.js'%}"></script>
+		
+		<script type="text/javascript">
+(function() {
+	var container_mydishes = document.getElementById( 'switch_tab_mydishes' );
+	var container_myorders = document.getElementById( 'switch_tab_myorders' );
+	var optionSwitch_mydishes = Array.prototype.slice.call( container_mydishes.querySelectorAll( 'div.cbp-vm-options > a' ) );
+	var optionSwitch_myorders = Array.prototype.slice.call( container_myorders.querySelectorAll( 'div.cbp-vm-options > a' ) );
+
+	function init() {
+		
+		optionSwitch_mydishes.forEach( function( el, i ) {
+			el.addEventListener( 'click', function( ev ) {
+				ev.preventDefault();
+				_switch( this ,optionSwitch_mydishes, container_mydishes);
+			}, false );
+		} );
+		
+		
+		optionSwitch_myorders.forEach( function( el, i ) {
+			el.addEventListener( 'click', function( ev ) {
+				ev.preventDefault();
+				_switch( this ,optionSwitch_myorders, container_myorders);
+			}, false );
+		} );
+	}
+
+	function _switch( opt , optionSwitch, container) {
+		// remove other view classes and any any selected option
+		optionSwitch.forEach(function(el) { 
+			classie.remove( container, el.getAttribute( 'data-view' ) );
+			classie.remove( el, 'cbp-vm-selected' );
+		});
+		// add the view class for this option
+		classie.add( container, opt.getAttribute( 'data-view' ) );
+		// this option stays selected
+		classie.add( opt, 'cbp-vm-selected' );
+	}
+
+	init();
+
+})();
+		</script>
+ <script>
+			new CBPFWTabs( document.getElementById( 'tabs' ) );
+			
+		</script>
+{% endblock %}

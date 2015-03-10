@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %} {% endblock %}
+{% block head %}Login{% endblock %}
+
+
+{% block content %}
+			
+			
+			<div class="stack" style="float:left;display: inline-flex;">
+	<ul id="elasticstack" class="stack__images">
+		<li><img src="{% static 'img/thumbs/slid1.jpg'%}" alt="01"/></li>
+		<li><img src="{% static 'img/thumbs/slid2.jpg'%}" alt="01"/></li>
+		<li><img src="{% static 'img/thumbs/slid3.jpg'%}" alt="01"/></li>
+		<li><img src="{% static 'img/thumbs/slid4.jpg'%}" alt="01"/></li>
+		<li><img src="{% static 'img/thumbs/slid5.jpg'%}" alt="01"/></li>
+		<li><img src="{% static 'img/thumbs/slid6.jpg'%}" alt="01"/></li>
+		<li><img src="{% static 'img/thumbs/slid7.jpg'%}" alt="01"/></li>
+		<li><img src="{% static 'img/thumbs/slid8.jpg'%}" alt="01"/></li>
+	</ul>
+	<button id="stack-next" class="stack__next"><i class="icon icon-down"></i><span>Next</span></button>
+	<ul id="stack-titles" class="stack__titles">
+		<li class="current">
+			<blockquote>
+			  <p>Cocktails made with kaya; local microbrewery beers; cider and wines with Lion City connections (and served here) – we help you get your drink on, starting at $12.</p>
+			  <footer><a href="#"> 50 drinks you must have in Singapore</a></footer>
+			</blockquote>
+		</li>
+		<li>
+			<blockquote>
+			  <p>Yes, there is good and cheap food to be had in Singapore's famous shopping belt. We hunt them down just for you</p>
+			  <footer><a href="#">The best meals on Orchard Road under $6</a>  </footer>
+			</blockquote>
+		</li>
+		<li>
+			<blockquote>
+			  <p>Book a table at these certified halal restaurants. We round up choices to suit several palates. From authentic Malay eats, to Swedish fare and a buffet.</p>
+			  <footer><a href="# ">9 halal restaurants to book online</a>  </footer>
+			</blockquote>
+		</li>
+		<li>
+			<blockquote>
+			  <p>The Golden Arches celebrates its third National Breakfast Day in Singapore with a morning giveaway</p>
+			  <footer><a href="# ">McDonald's to give away 120,000 free Egg McMuffins</a></footer>
+			</blockquote>
+		</li>
+		<li>
+			<blockquote>
+			  <p>In this weekly column, HungryGoWhere's editor, Celine Asril, recommends her top picks. This week: a history lesson on cocktails</p>
+			  <footer><a href=" #">The food editor recommends...</a>  </footer>
+			</blockquote>
+		</li>
+		<li>
+			<blockquote>
+			  <p>From bentos and wafers, to pasta in the iconic cat’s shapes, puddings and cake pops – we just can’t get enough of Hello Kitty</p>
+			  <footer><a href=" #"> Hello Kitty foods to eat, buy and make</a> </footer>
+			</blockquote>
+		</li>
+				<li>
+			<blockquote>
+			  <p>In this weekly column, HungryGoWhere's editor, Celine Asril, recommends her top picks. This week: a history lesson on cocktails</p>
+			  <footer><a href=" #">The food editor recommends...</a>  </footer>
+			</blockquote>
+		</li>
+		<li>
+			<blockquote>
+			  <p>From bentos and wafers, to pasta in the iconic cat’s shapes, puddings and cake pops – we just can’t get enough of Hello Kitty</p>
+			  <footer><a href=" #"> Hello Kitty foods to eat, buy and make</a> </footer>
+			</blockquote>
+		</li>
+	</ul>
+</div><!-- /stack -->
+
+	
+	
+	
+	
+ 
+			
+			<div id="quick_booking">
+			<h2> Quick Booking</h2>
+			<div id="nl-form" class="nl-form">
+					I feel like eating
+					<select>
+						<option value="1" selected>any food</option>
+						<option value="2">Indian</option>
+						<option value="3">French</option>
+						<option value="4">Japanese</option>
+						<option value="2">Italian</option>
+					</select>
+					<br />in a
+					<select>
+						<option value="1" selected>standard</option>
+						<option value="2">fancy</option>
+						<option value="3">hip</option>
+						<option value="4">traditional</option>
+						<option value="2">romantic</option>
+					</select>
+					restaurant
+					<br /> 
+					<select>
+						<option value="1" selected>anytime</option>
+					 	<option value="1">at 7 p.m.</option>
+					 	<option value="2">at 8 p.m.</option>
+					 	<option value="3">at 9 p.m.</option>
+					</select>
+					in <input type="text" value="" placeholder="any city" data-subline="For example: <em>Los Angeles</em> or <em>New York</em>"/>
+					<div class="nl-submit-wrap">
+						<a href="menu.html"><button class="nl-submit" >Book Now</button></a>
+					</div>
+					<div class="nl-overlay"></div>
+			<!-- 	</form> -->
+			
+			
+				</div>
+				
+				
+				
+				
+
+			</div>
+			
+			
+			
+			
+			
+			
+
+
+
+ 
+
+
+
+			<div class="overlay"></div>
+ 
+{% endblock %}
+
+{% block body_class %}class="home_page"{% endblock %}
+
+{% block scripts %}
+					
+
+					<script src="{% static 'js/modernizr.custom_elastic_slider.js'%}"></script>
+					
+					<script src="{% static 'js/nlform.js'%}"></script>
+					<script>
+			var nlform = new NLForm( document.getElementById( 'nl-form' ) );
+		</script>
+					
+
+				<script src="{% static 'js/draggabilly.pkgd.min.js'%}"></script>
+		<script src="{% static 'js/elastiStack.js'%}"></script>
+		<script>
+			(function() {
+				var body = document.body,
+					titles = [].slice.call( document.querySelectorAll( '#stack-titles > li' ) ),
+					totalTitles = titles.length,
+					stack = new ElastiStack( document.getElementById( 'elasticstack' ), {
+						onUpdateStack : function( idx ) {
+							classie.remove( titles[idx === 0 ? totalTitles - 1 : idx - 1], 'current' );
+							classie.add( titles[idx], 'current' );
+						}
+					} )
+			})();
+		</script>
+{% endblock %}
