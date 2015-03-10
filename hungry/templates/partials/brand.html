@@ -1,6 +1,7 @@
+{% load staticfiles %}
 <div class="span7 h1">
 <a href="{{ homepage_url }}"><h1><img src="{% static 'img/door_logo.png'%}" style="width:249px;margin:26px 26px 0px 0px"><br><span>Demand your menu, any where ,any time...</span></h1></a>
-		
-	<a href="{{ homepage_url }}">{% block brand_title %}{{ shop_name }}</a><small>
+
+	{% block brand_title %} <a href="{{ homepage_url }}">{{ shop_name }}</a><small>
 		{{ shop_tagline }}</small>{% endblock %}
 </div>
