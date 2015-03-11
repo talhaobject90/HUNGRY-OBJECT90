@@ -29,10 +29,10 @@
 		<div class="container_body">
 
 			<div id="morphsearch" class="morphsearch">
-				<form class="morphsearch-form">
-					<input class="morphsearch-input" type="search" placeholder="Search Ur menu"/>
-					<button class="morphsearch-submit" type="submit">Search</button>
-				</form>
+		<form class="morphsearch-form" action="{% url 'search:search' %}" method="get">
+			<input id="id_q" name="q" placeholder="Search Ur menu" type="search" class="morphsearch-input" >
+			<button class="morphsearch-submit" type="submit">Search</button>
+		</form>
 				<div class="morphsearch-content">
 					<div class="dummy-column">
 						<h2>Top Rated Dishes</h2>
@@ -274,7 +274,9 @@
 				
 
 				/***** for demo purposes only: don't allow to submit the form *****/
-				morphSearch.querySelector( 'button[type="submit"]' ).addEventListener( 'click', function(ev) { ev.preventDefault(); } );
+				morphSearch.querySelector( 'button[type="submit"]' ).addEventListener( 'click', function(ev) { 
+					/* ev.preventDefault(); */ 
+				} );
 			})();
 		</script>
 				<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
