@@ -2,13 +2,26 @@
 {% load i18n %}
 {% load promotion_tags %}
 {% load category_tags %}
+{% load staticfiles %}
 
 {% block layout %}
 
     <header class="header container-fluid">
         <div class="page_inner">
             <div class="row-fluid">
-                {% include "partials/brand.html" %}
+                <a href="index.html" class="home_to_door_link">
+				<h1>
+					<img src="{% static 'img/door_logo.png'%}"
+						style="width: 249px; margin: 26px 26px 0px 26px"><br>
+					<span class="home_to_door_moto">Demand your menu, any where ,any time...</span>
+				</h1>
+			</a> 
+				
+				<!-- {% include "partials/brand.html" %} -->
+                {# Mini-basket wrapped in a block so some templates can now display it #}
+                {% block mini_basket %}{% include "partials/mini_basket.html" %}{% endblock %}
+                
+                {% include "partials/search_new.html" %}
             </div><!-- /row-fluid -->
         </div>
         {% block checkout_nav %}{% endblock %}
