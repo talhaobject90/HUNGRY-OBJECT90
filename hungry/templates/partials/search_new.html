@@ -1,0 +1,150 @@
+{% load i18n %}
+{% load staticfiles %}
+
+<div id="morphsearch" class="morphsearch">
+<!-- 	<form method="get" action="{% url 'search:search' %}" class="navbar-form pull-right morphsearch_form">
+    <input type="submit" value="{% trans "Search" %}" class="btn" />
+    
+    <button class="morphsearch-submit" type="submit">{% trans "Search" %}</button>
+	</form> -->
+	<form class="morphsearch-form" action="{% url 'search:search' %}" method="get">
+		<input id="id_q" name="q" placeholder="Search Ur menu" type="search" class="morphsearch-input" >
+		<button class="morphsearch-submit" type="submit">Search</button>
+	</form>
+	<div class="morphsearch-content">
+		<div class="dummy-column">
+			<h2>Top Rated Dishes</h2>
+			<a class="dummy-media-object" href="#"> <img class="round"
+				src="{% static 'img/thumbs/hotel2.jpg'%}" alt="Sara Soueidan" />
+				<h3>DONUT PASTRY</h3>
+			</a> <a class="dummy-media-object" href="#"> <img class="round"
+				src="{% static 'img/thumbs/hotel1.jpg'%}" alt="Rachel Smith" />
+				<h3>CARROT CAKE</h3>
+			</a> <a class="dummy-media-object" href="#"> <img class="round"
+				src="{% static 'img/thumbs/hotel.jpg'%}" alt="Peter Finlan" />
+				<h3>TOOTSIE ROLL MARSHMALLOW</h3>
+			</a> <a class="dummy-media-object" href="#"> <img class="round"
+				src="{% static 'img/thumbs/hotel1.jpg'%}" alt="Patrick Cox" />
+				<h3>Cream gummi bears</h3>
+			</a> <a class="dummy-media-object" href="#"> <img class="round"
+				src="{% static 'img/thumbs/hotel2.jpg'%}" alt="Tim Holman" />
+				<h3>TOFFEE SOUFFLÉ CHOCOLATE BAR</h3>
+			</a> <a class="dummy-media-object" href="#"> <img class="round"
+				src="{% static 'img/thumbs/hotel.jpg'%}" alt="Shaun Dona" />
+				<h3>PIE WAFER BROWNIE</h3>
+			</a>
+		</div>
+		<div class="dummy-column">
+			<h2>TOP MENUS</h2>
+			<a class="dummy-media-object" href="#"> <img
+				src="{% static 'img/thumbs/non_veg.jpg'%}"
+				alt="PagePreloadingEffect" />
+				<h3>Non-Vegetarian</h3>
+			</a> <a class="dummy-media-object" href="#"> <img
+				src="{% static 'img/thumbs/veg.jpg'%}" alt="ArrowNavigationStyles" />
+				<h3>Vegetarian</h3>
+			</a> <a class="dummy-media-object" href="#"> <img
+				src="{% static 'img/thumbs/japanese.jpg'%}"
+				alt="HoverEffectsIdeasNew" />
+				<h3>Chinese</h3>
+			</a> <a class="dummy-media-object" href="#"> <img
+				src="{% static 'img/thumbs/chinese.jpg'%}" alt="FreebieHalcyonDays" />
+				<h3>Japanese</h3>
+			</a> <a class="dummy-media-object" href="#"> <img
+				src="{% static 'img/thumbs/french.jpg'%}" alt="ArticleIntroEffects" />
+				<h3>Italian</h3>
+			</a> <a class="dummy-media-object" href="#"> <img
+				src="{% static 'img/thumbs/japanese.jpg'%}"
+				alt="DraggableDualViewSlideshow" />
+				<h3>French</h3>
+			</a>
+		</div>
+		<div class="dummy-column">
+			<h2>OFFERS</h2>
+			<a class="dummy-media-object" href="#"> <img
+				src="{% static 'img/thumbs/win.jpg'%}"
+				alt="TooltipStylesInspiration" />
+				<h3>Win a Trip</h3>
+			</a> <a class="dummy-media-object" href="#"> <img
+				src="{% static 'img/thumbs/offer.jpg'%}"
+				alt="AnimatedHeaderBackgrounds" />
+				<h3>Weekdays Lunch 50% off!!</h3>
+			</a> <a class="dummy-media-object" href="3"> <img
+				src="{% static 'img/thumbs/coupons.jpg'%}" alt="OffCanvas" />
+				<h3>$500 Worth Vouchers</h3>
+			</a> <a class="dummy-media-object" href="#"> <img
+				src="{% static 'img/thumbs/hotel1.jpg'%}" alt="TabStyles" />
+				<h3>Party Offers</h3>
+			</a> <a class="dummy-media-object" href="#"> <img
+				src="{% static 'img/thumbs/hotel2.jpg'%}" alt="ResponsiveSVGs" />
+				<h3>Special Member Discounts</h3>
+			</a>
+
+		</div>
+	</div>
+	<!-- /morphsearch-content -->
+	<span class="morphsearch-close"></span>
+</div>
+
+<script>
+			(function() {
+				var morphSearch = document.getElementById( 'morphsearch' ),
+					input = morphSearch.querySelector( 'input.morphsearch-input' ),
+					ctrlClose = morphSearch.querySelector( 'span.morphsearch-close' ),
+					isOpen = isAnimating = false,
+					// show/hide search area
+					toggleSearch = function(evt) {
+						// return if open and the input gets focused
+						if( evt.type.toLowerCase() === 'focus' && isOpen ) return false;
+
+						var offsets = morphsearch.getBoundingClientRect();
+						if( isOpen ) {
+							classie.remove( morphSearch, 'open' );
+
+							// trick to hide input text once the search overlay closes 
+							// todo: hardcoded times, should be done after transition ends
+							if( input.value !== '' ) {
+								setTimeout(function() {
+									classie.add( morphSearch, 'hideInput' );
+									setTimeout(function() {
+										classie.remove( morphSearch, 'hideInput' );
+										input.value = '';
+									}, 300 );
+								}, 500);
+							}
+							
+							input.blur();
+						}
+						else {
+							classie.add( morphSearch, 'open' );
+						}
+						isOpen = !isOpen;
+					};
+
+				// events
+				input.addEventListener( 'focus', toggleSearch );
+				ctrlClose.addEventListener( 'click', toggleSearch );
+				// esc key closes search overlay
+				// keyboard navigation events
+				document.addEventListener( 'keydown', function( ev ) {
+					var keyCode = ev.keyCode || ev.which;
+					if( keyCode === 27 && isOpen ) {
+						toggleSearch(ev);
+					}
+				} );
+
+
+				/***** for demo purposes only: don't allow to submit the form *****/
+				morphSearch.querySelector( 'button[type="submit"]' ).addEventListener( 'click', function(ev) { 
+					/* ev.preventDefault(); */ 
+					
+				} );
+			})();
+		</script>
+		
+<!-- /morphsearch -->
+<!-- 
+<form method="get" action="{% url 'search:search' %}" class="navbar-form pull-right">
+    {{ search_form.q }}
+    <input type="submit" value="{% trans "Search" %}" class="btn" />
+</form> -->

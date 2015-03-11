@@ -55,8 +55,7 @@ INSTALLED_APPS = [
     'social.apps.django_app.default',
     'django.contrib.sites',
     'django.contrib.flatpages',
-    'compressor',
-    
+    'compressor'
     #'beachnbeach.templatetags.resort_location'
 ] + get_core_apps()
 
@@ -209,8 +208,8 @@ LOGIN_REDIRECT_URL = '/'
 
 
 if not ON_PAAS:  #### local
-    SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '677283859875-psfut9v07mdocv38qhdea45mbgr69cbs.apps.googleusercontent.com'
-    SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'iN8EE1eowFGp8R-i6rr8Vgh-'
+    SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '677283859875-pabljab4k7cvfn1m7pe9u44t8ifjbp9j.apps.googleusercontent.com'
+    SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'Cn7w3HIWNj9gNnfjQ0fMLbBw'
     SOCIAL_AUTH_FACEBOOK_KEY = '899881513404011'
     SOCIAL_AUTH_FACEBOOK_SECRET = 'eb4cd81670846c2c2923e75a3d96bac3'
     SOCIAL_AUTH_TWITTER_KEY = 'DWAeauzK67UsdD0Pqx9iHw7Qk'
@@ -246,5 +245,14 @@ OSCAR_ORDER_STATUS_PIPELINE = {
     'Being processed': ('Processed', 'Cancelled',),
     'Cancelled': (),
 }
+
+
+DATACASH_HOST = 'testserver.datacash.com'
+DATACASH_CLIENT = '...'
+DATACASH_PASSWORD = '...'
+DATACASH_CURRENCY = 'GBP'
+
+
+OSCAR_DEFAULT_CURRENCY = 'INR'
 
 

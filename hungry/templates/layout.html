@@ -1,28 +1,37 @@
 {% extends "base.html" %}
 {% load compress %}
 {% load promotion_tags %}
+{% load staticfiles %}
 
 {% block layout %}
     {# Top-horizontal bar with account, notifictions, dashboard links #}
     {% include "partials/nav_accounts.html" %}
 
     {# Site logo/title, mini-basket, browse dropdown and searchbox #}
-    <header class="header container-fluid">
+    <header class="codrops-header">
         <div class="page_inner">
             <div class="row-fluid">
-                {% include "partials/brand.html" %}
+			<a href="index.html" class="home_to_door_link">
+				<h1>
+					<img src="{% static 'img/door_logo.png'%}"
+						style="width: 249px; margin: 26px 26px 0px 26px"><br>
+					<span class="home_to_door_moto">Demand your menu, any where ,any time...</span>
+				</h1>
+			</a> 
+				
+				<!-- {% include "partials/brand.html" %} -->
                 {# Mini-basket wrapped in a block so some templates can now display it #}
                 {% block mini_basket %}{% include "partials/mini_basket.html" %}{% endblock %}
+                
+                {% include "partials/search_new.html" %}
             </div>
         </div>
-        {% block navigation %}
-            {% include "partials/nav_primary.html" %}
-        {% endblock %}
+        
     </header>
 
     {# Main content of page - other layout templates may override this block #}
     {% block content_wrapper %}
-        <div class="container-fluid page">
+        <div class="container-fluid page container-liquid">
             <div class="page_inner">
                 {% block breadcrumbs %}{% endblock %}
                 {% block header %}

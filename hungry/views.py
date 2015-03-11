@@ -3,20 +3,6 @@ from django.http import HttpResponse
 from django.template import RequestContext , loader,Template,Context
 from django.shortcuts import render , render_to_response
 
-'''
-from oscar.apps.catalogue.categories import create_from_breadcrumbs
-categories = (
-    'Food > Starters',
-    'Food > Snacks',
-    'Food > Meal',
-    'Food > Desserts',
-)
-
-
-for breadcrumbs in categories:
-    create_from_breadcrumbs(breadcrumbs)
-'''
-
 
 def index(request):
     context = RequestContext(request,

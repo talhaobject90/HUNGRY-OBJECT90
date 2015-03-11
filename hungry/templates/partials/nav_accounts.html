@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load category_tags %}
 
 <div id="top_page" class="navbar navbar-static-top accounts">
     <div class="navbar-inner">
@@ -12,21 +13,42 @@
 
         <div class="nav-collapse account-collapse collapse">
             <div class="container-fluid">
-                {% if LANGUAGES|length > 1 %}
-                    <form id="language_selector" class="pull-left navbar-form" action="{% url 'set_language' %}" method="post">
-                        {% csrf_token %}
-                        <input name="next" type="hidden" value="{{ language_neutral_url_path }}" />
-                        <select name="language">
-                            {% get_language_info_list for LANGUAGES as languages %}
-                            {% for language in languages %}
-                                <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE%} selected="selected"{% endif %}>
-                                    {{ language.name_local }}
-                                </option>
-                            {% endfor %}
-                        </select>
-                        <button class="btn" type="submit">{% trans "Go" %}</button>
-                    </form>
-                {% endif %}
+            
+           	 <ul id="browse" class="nav">
+                    <li class="dropdown active {% if expand_dropdown %}open{% endif %}">
+                        <a href="#" class="dropdown-toggle" {% if not expand_dropdown %} data-toggle="dropdown"{% endif %}>
+                            {% trans "Browse store" %}
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" data-navigation="dropdown-menu">
+                            {% category_tree depth=2 as tree_categories %}
+                            <li><a tabindex="-1" href="{% url 'catalogue:index' %}">{% trans "All products" %}</a></li>
+                            {% if tree_categories %}
+                                <li class="divider"></li>
+                                {% for tree_category, info in tree_categories %}
+                                    {% if info.has_children %}
+                                        <li class="dropdown-submenu">
+                                            <a tabindex="-1" href="{{ tree_category.get_absolute_url }}">{{ tree_category.name }}</a>
+                                            <ul class="dropdown-menu">
+                                            {% else %}
+                                                <li><a tabindex="-1" href="{{ tree_category.get_absolute_url }}">{{ tree_category.name }}</a></li>
+                                            {% endif %}
+
+                                            {% for close in info.num_to_close %}
+                                                </ul></li>
+                                            {% endfor %}
+                                {% endfor %}
+                            {% endif %}
+                            <li class="divider"></li>
+                            {% block nav_dropdown_extra_items %}
+                                <li><a href="{% url 'offer:list' %}">{% trans "Offers" %}</a></li>
+                            {% endblock %}
+                        </ul>
+                    </li>
+                    {% block nav_extra %}
+                    {% endblock %}
+                </ul>
+                
                 <ul class="nav pull-right">
                     {% if user.is_authenticated %}
                         <li>

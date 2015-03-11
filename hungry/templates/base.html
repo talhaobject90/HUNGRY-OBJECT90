@@ -43,18 +43,18 @@
                         <link rel="stylesheet" type="text/less" href="{% static "oscar/less/styles.less" %}" />
                         <link rel="stylesheet" type="text/less" href="{% static "oscar/less/responsive.less" %}" />
                     {% else %}
-                        <link rel="stylesheet" type="text/css" href="{% static "oscar/css/styles.css" %}" />
+                      <link rel="stylesheet" type="text/css" href="{% static "oscar/css/styles.css" %}" />
                         <link rel="stylesheet" type="text/css" href="{% static "oscar/css/responsive.css" %}" />
-                        
+                          <link rel="stylesheet" type="text/css" href="{% static "oscar/css/component.css" %}" />
+                          
                     	<link rel="shortcut icon" href="../favicon.ico">
-						<link href='http://fonts.googleapis.com/css?family=Raleway:100,700,800' rel='stylesheet' type='text/css'>
+<!-- 						<link href='http://fonts.googleapis.com/css?family=Raleway:100,700,800' rel='stylesheet' type='text/css'>
 						<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.2.0/css/font-awesome.min.css'%}" />
-                        <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.2.0/css/font-awesome.min.css'%}" />
 						
 						<link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css'%}" />
 						<link rel="stylesheet" type="text/css" href="{% static 'css/demo.css'%}" />
 						<link rel="stylesheet" type="text/css" href="{% static 'css/component.css'%}" />
-						<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css'%}" />
+						<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css'%}" /> -->
 						
 				                        
                         
@@ -95,6 +95,7 @@
             <script type="text/javascript" src="{% static "oscar/js/bootstrap/bootstrap.min.js" %}"></script>
             <!-- Oscar -->
             <script src="{% static "oscar/js/oscar/ui.js" %}" type="text/javascript" charset="utf-8"></script>
+            <script src="{% static "oscar/js/classie.js" %}" type="text/javascript" charset="utf-8"></script>
             {% endcompress %}
         {% endblock %}
 
