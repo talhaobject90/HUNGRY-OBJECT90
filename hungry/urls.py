@@ -16,6 +16,8 @@ urlpatterns = patterns('',
     url(r'^mydishes/', views.mydishes),
     #url(r'^products/', CatalogueView),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^terms/(?P<terms_type>\w+)', views.terms),
+#    url(r'^terms/$', views.terms),
     url(r'^listreceipes/', views.listreceipes),
     
     url('', include('social.apps.django_app.urls', namespace='social')),

@@ -27,4 +27,13 @@ def mydishes(request):
     
 def listreceipes(request):
     return render_to_response('hungry/listreceipes.html')
+
+def terms(request, terms_type= ''):
+    if terms_type:
+        context = RequestContext(request,
+                           {'request': request,
+                            'terms_type': terms_type})
+        return render_to_response('hungry/terms.html',
+                             context_instance=context)  
+                                            
          
