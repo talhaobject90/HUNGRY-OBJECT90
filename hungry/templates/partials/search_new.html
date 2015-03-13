@@ -1,5 +1,6 @@
 {% load i18n %}
 {% load staticfiles %}
+{% load thumbnail %}
 
 <div id="morphsearch" class="morphsearch">
 <!-- 	<form method="get" action="{% url 'search:search' %}" class="navbar-form pull-right morphsearch_form">
@@ -14,25 +15,31 @@
 	<div class="morphsearch-content">
 		<div class="dummy-column">
 			<h2>Top Rated Dishes</h2>
-			<a class="dummy-media-object" href="#"> <img class="round"
-				src="{% static 'img/thumbs/hotel2.jpg'%}" alt="Sara Soueidan" />
-				<h3>DONUT PASTRY</h3>
-			</a> <a class="dummy-media-object" href="#"> <img class="round"
-				src="{% static 'img/thumbs/hotel1.jpg'%}" alt="Rachel Smith" />
-				<h3>CARROT CAKE</h3>
-			</a> <a class="dummy-media-object" href="#"> <img class="round"
-				src="{% static 'img/thumbs/hotel.jpg'%}" alt="Peter Finlan" />
-				<h3>TOOTSIE ROLL MARSHMALLOW</h3>
-			</a> <a class="dummy-media-object" href="#"> <img class="round"
-				src="{% static 'img/thumbs/hotel1.jpg'%}" alt="Patrick Cox" />
-				<h3>Cream gummi bears</h3>
-			</a> <a class="dummy-media-object" href="#"> <img class="round"
-				src="{% static 'img/thumbs/hotel2.jpg'%}" alt="Tim Holman" />
-				<h3>TOFFEE SOUFFLÉ CHOCOLATE BAR</h3>
-			</a> <a class="dummy-media-object" href="#"> <img class="round"
-				src="{% static 'img/thumbs/hotel.jpg'%}" alt="Shaun Dona" />
-				<h3>PIE WAFER BROWNIE</h3>
-			</a>
+	<!-- 		
+			  {% if products %}
+			  		{% for product in products %}
+			  				{{ product.get_title  }}
+			  		{% endfor %}
+			   {% else %}
+        			<p class="nonefound">{% trans "No products found." %}</p>
+   				{% endif %} -->
+   				
+{% if top_products %}
+	{% for top_product in  top_products %}
+		<a class="dummy-media-object" href="{{ top_product.get_absolute_url }}"> 
+		
+		   {% with image=top_product.primary_image %}
+                {% thumbnail image.original "x155" upscale=False as thumb %}
+                    
+                    <img src="{{ thumb.url }}" alt="{{ top_product.get_title }}"  class="round">
+                    {% endthumbnail %}
+                {% endwith %}
+                
+                <!--  {% static 'img/thumbs/hotel2.jpg'%}  -->
+                
+				<h3>{{ top_product.get_title }}</h3></a>
+	{% endfor  %}
+{% endif %}
 		</div>
 		<div class="dummy-column">
 			<h2>TOP MENUS</h2>
