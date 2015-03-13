@@ -1,0 +1,5 @@
+from django.apps import AppConfig
+
+class CheckoutConfig(AppConfig):
+    name = 'checkout'
+    label = 'my.checkout'  # <-- this is the important line - change it to anything other than the default ('foo' in this case)
