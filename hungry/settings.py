@@ -61,11 +61,15 @@ INSTALLED_APPS = [
     'catalogue',
     'dcavenue',
     'checkout',
-
+    'dashboard',
+ 
     #'beachnbeach.templatetags.resort_location'
 ] + get_core_apps()
 
 SITE_ID = 1
+
+
+ 
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -268,11 +272,18 @@ DCAVENUE = {
 }
 
 DCAVENUE["JAR"] = '/var/www/hungry/hungry/ccavutil.jar'
-
+ 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'talhaqqq@gmail.com'
 EMAIL_HOST_PASSWORD = '9947183255'
+ 
 
+'''
+from django.core.mail import send_mail
 
+send_mail('Subject here', 'Here is the message.', 'from@example.com',
+    ['talha@object90.com'], fail_silently=False)
+'''
+ 

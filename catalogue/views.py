@@ -7,6 +7,7 @@ from django.views.generic import DetailView, TemplateView
 from django.utils.translation import ugettext_lazy as _
 from oscar.core.loading import get_class, get_model
 from oscar.apps.catalogue.signals import product_viewed
+from django.http import HttpResponse
 
 Product = get_model('catalogue', 'product')
 ProductReview = get_model('reviews', 'ProductReview')
@@ -150,6 +151,7 @@ class CatalogueView(TemplateView):
 
 
 class ProductCategoryView(TemplateView):
+    
     """
     Browse products in a given category
     """
@@ -158,8 +160,12 @@ class ProductCategoryView(TemplateView):
     enforce_paths = True
 
     def get(self, request, *args, **kwargs):
+        
+       # return HttpResponse(get_category())
+        
         # Fetch the category; return 404 or redirect as needed
         self.category = self.get_category()
+        
         potential_redirect = self.redirect_if_necessary(
             request.path, self.category)
         if potential_redirect is not None:

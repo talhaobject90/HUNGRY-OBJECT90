@@ -1,77 +1,63 @@
 {% extends "hungry/base.html" %}
 {% load staticfiles %}
+{% load thumbnail %}
+
 {% block title %} {% endblock %}
 {% block head %}Login{% endblock %}
 
 
 {% block content %}
+
+
+
+
+{% if top_products %}
+
+
+
+
 			
 			
 			<div class="stack" style="float:left;display: inline-flex;">
+			
 	<ul id="elasticstack" class="stack__images">
-		<li><img src="{% static 'img/thumbs/slid1.jpg'%}" alt="01"/></li>
-		<li><img src="{% static 'img/thumbs/slid2.jpg'%}" alt="01"/></li>
-		<li><img src="{% static 'img/thumbs/slid3.jpg'%}" alt="01"/></li>
-		<li><img src="{% static 'img/thumbs/slid4.jpg'%}" alt="01"/></li>
-		<li><img src="{% static 'img/thumbs/slid5.jpg'%}" alt="01"/></li>
-		<li><img src="{% static 'img/thumbs/slid6.jpg'%}" alt="01"/></li>
-		<li><img src="{% static 'img/thumbs/slid7.jpg'%}" alt="01"/></li>
-		<li><img src="{% static 'img/thumbs/slid8.jpg'%}" alt="01"/></li>
+		{% for top_product in  top_products %}
+		   {% with image=top_product.primary_image %}
+                {% thumbnail image.original "x410" upscale=False as thumb %}
+                    <li><img src="{{ thumb.url }}" alt="{{ top_product.get_title }}"/></li>
+                    {% endthumbnail %}
+                {% endwith %}
+	 
+	{% endfor  %}
+	
+	
+  
 	</ul>
 	<button id="stack-next" class="stack__next"><i class="icon icon-down"></i><span>Next</span></button>
 	<ul id="stack-titles" class="stack__titles">
-		<li class="current">
+	{% for top_product in  top_products %}
+	<li {% if forloop.counter == 1 %} class="current" {% endif %} >
 			<blockquote>
-			  <p>Cocktails made with kaya; local microbrewery beers; cider and wines with Lion City connections (and served here) – we help you get your drink on, starting at $12.</p>
-			  <footer><a href="#"> 50 drinks you must have in Singapore</a></footer>
+			
+			  <p>
+			  {% autoescape off %}
+			  {{ top_product.description |truncatewords:20}}
+			  {% endautoescape %}
+			  </p>
+			  <footer><a href="{{ top_product.get_absolute_url }}">{{ top_product.get_title }}</a></footer>
 			</blockquote>
 		</li>
-		<li>
-			<blockquote>
-			  <p>Yes, there is good and cheap food to be had in Singapore's famous shopping belt. We hunt them down just for you</p>
-			  <footer><a href="#">The best meals on Orchard Road under $6</a>  </footer>
-			</blockquote>
-		</li>
-		<li>
-			<blockquote>
-			  <p>Book a table at these certified halal restaurants. We round up choices to suit several palates. From authentic Malay eats, to Swedish fare and a buffet.</p>
-			  <footer><a href="# ">9 halal restaurants to book online</a>  </footer>
-			</blockquote>
-		</li>
-		<li>
-			<blockquote>
-			  <p>The Golden Arches celebrates its third National Breakfast Day in Singapore with a morning giveaway</p>
-			  <footer><a href="# ">McDonald's to give away 120,000 free Egg McMuffins</a></footer>
-			</blockquote>
-		</li>
-		<li>
-			<blockquote>
-			  <p>In this weekly column, HungryGoWhere's editor, Celine Asril, recommends her top picks. This week: a history lesson on cocktails</p>
-			  <footer><a href=" #">The food editor recommends...</a>  </footer>
-			</blockquote>
-		</li>
-		<li>
-			<blockquote>
-			  <p>From bentos and wafers, to pasta in the iconic cat’s shapes, puddings and cake pops – we just can’t get enough of Hello Kitty</p>
-			  <footer><a href=" #"> Hello Kitty foods to eat, buy and make</a> </footer>
-			</blockquote>
-		</li>
-				<li>
-			<blockquote>
-			  <p>In this weekly column, HungryGoWhere's editor, Celine Asril, recommends her top picks. This week: a history lesson on cocktails</p>
-			  <footer><a href=" #">The food editor recommends...</a>  </footer>
-			</blockquote>
-		</li>
-		<li>
-			<blockquote>
-			  <p>From bentos and wafers, to pasta in the iconic cat’s shapes, puddings and cake pops – we just can’t get enough of Hello Kitty</p>
-			  <footer><a href=" #"> Hello Kitty foods to eat, buy and make</a> </footer>
-			</blockquote>
-		</li>
+		{% endfor  %}
+	
+	
+ 
+	 
 	</ul>
 	
 
 </div><!-- /stack -->
+
+{% endif %}
 
 
 	
@@ -80,36 +66,26 @@
 	
  
 			
-			<div id="quick_booking">
-			<h2> Quick Booking</h2>
+			<div id="quick_booking"  style="min-width:25%;max-width:34%">
+			<h2> <b>Quick Booking</b></h2>
 			<div id="nl-form" class="nl-form">
 					I feel like eating
-					<select>
-						<option value="1" selected>any food</option>
-						<option value="2">Indian</option>
-						<option value="3">French</option>
-						<option value="4">Japanese</option>
-						<option value="2">Italian</option>
-					</select>
-					<br />in a
-					<select>
-						<option value="1" selected>standard</option>
-						<option value="2">fancy</option>
-						<option value="3">hip</option>
-						<option value="4">traditional</option>
-						<option value="2">romantic</option>
-					</select>
-					restaurant
-					<br /> 
-					<select>
-						<option value="1" selected>anytime</option>
-					 	<option value="1">at 7 p.m.</option>
-					 	<option value="2">at 8 p.m.</option>
-					 	<option value="3">at 9 p.m.</option>
-					</select>
-					in <input type="text" value="" placeholder="any city" data-subline="For example: <em>Los Angeles</em> or <em>New York</em>"/>
+			<input type="text" value="" placeholder="any food" data-subline="For example: <em>Chilly Chicken</em> or <em>Prawn Fry</em>"/>
+			within <select>
+			<option>days</option>
+			<option>one</option>
+			<option>two</option>
+			<option>three</option>
+			<option>four</option>
+			<option>five</option>
+			<option>six</option>
+			
+			</select> 
+			days.
+			
+					 
 					<div class="nl-submit-wrap">
-						<a href="menu.html"><button class="nl-submit" >Book Now</button></a>
+						<a href="#"><button class="nl-submit" >Book Now</button></a>
 					</div>
 					<div class="nl-overlay"></div>
 			<!-- 	</form> -->
@@ -125,7 +101,7 @@
 			
 			
 			<br><br><br><br><br><br><br><br><br><br><br><br> <br><br><br>
-			<div class="row col-md-12">
+			<div class="row col-md-12  text-center"  style="position:relative;bottom:-105px">
 			
 				<a href="terms/conditions/" >Terms and Conditions</a> &emsp; &emsp;
 				<a href="terms/delivery/" >Delivery and Shipping policy</a>&emsp; &emsp;

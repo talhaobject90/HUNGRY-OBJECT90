@@ -190,15 +190,14 @@
 				</li>
 				<li class="">
 					<a href="#">Demand Menu</a>
-					<ul class="cbp-tm-submenu">
-					<li><a href="{% url 'index'%}catalogue">  <i class="fa fa-fw fa-cutlery"></i>Catalogues </a></li>
-						<li><a href="#"><i class="fa fa-fw fa-usd"></i>Biddings</a></li>
-						<li><a href="dishes.html" ><i class="fa fa-fw fa-ge"></i>Vegetatian</a></li>
-						<li><a href="dishes.html"><i class="fa fa-fw fa-github-alt"></i>Non-Vegetarian</a></li>
-						<li><a href=dishes.html><i class="fa fa-fw fa-inbox"></i>Snacks Packs</a></li>
-						
-						
-					</ul>
+	
+					 <ul class="cbp-tm-submenu ">
+                {% for tree_category in tree_categories %}
+                    <li>
+                        <a href="{{ tree_category.get_absolute_url }}"><i class="fa fa-fw fa-cutlery"> </i>  {{ tree_category.name }}</a>
+           </li>
+                {% endfor %}
+            </ul>
 				</li>
 
 				<li class="">
